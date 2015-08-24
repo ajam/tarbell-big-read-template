@@ -67,6 +67,10 @@
     color: #fff;
 }
 
+.navbar-header {
+    color: #ffffff;
+}
+
 @media(min-width:768px) {
     .navbar-custom {
         padding: 20px 0;
@@ -78,6 +82,9 @@
         transition: background .5s ease-in-out,padding .5s ease-in-out;
     }
 
+
+    
+
     .navbar-custom.top-nav-collapse {
         padding: 0;
         border-bottom: 1px solid rgba(255,255,255,.3);
@@ -88,15 +95,12 @@
 .intro {
     display: table; 
     width: 100%;
-    /* height: auto; */
-    /* padding: 100px 0; */
     text-align: center;
     color: #fff;
     position: absolute;
     top: 0;
     left: 0;
     margin-top: 20%;
-}
 }
 
 .intro .intro-body {
@@ -140,6 +144,35 @@
     .intro .intro-body .intro-text {
         font-size: 26px;
     }
+}
+
+@media(max-width:768px) {
+    .intro{
+        position:relative;
+        margin-top: 50px;
+        color:#888;
+        text-shadow:none;
+        padding:0;
+    }
+
+    .intro .intro-body .intro-text,
+    .intro .intro-body .brand-heading {
+     text-shadow: none; 
+    }
+
+    .intro .intro-body .intro-text{
+        font-size: 1.2em;
+    }
+    
+    .intro .intro-body .brand-heading {
+        font-size: 2.2em;
+    }
+
+    .btn{
+        display:none;
+
+    }
+
 }
 
 .btn-circle {
