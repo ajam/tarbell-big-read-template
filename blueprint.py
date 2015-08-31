@@ -145,7 +145,7 @@ def copy_files(site, git):
     git.add('js')
     git.commit(m='Add js folder')
 
-    for chapter in glob.glob('{0}/_chapter*'.format(site.path)):
+    for chapter in glob.glob('{0}/_blueprint/_chapter*'.format(site.path)):
         shutil.copy(chapter, site.path)
     git.add('_chapter*')
     git.commit(m='Add chapters')
