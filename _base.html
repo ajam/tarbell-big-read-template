@@ -67,22 +67,27 @@
         </div>
         {% endfor %}
 
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
+        {% block library_js %}
+        {{ JS.push('lib/jquery/dist/jquery.js') }}
+        {{ JS.push('lib/bootstrap/dist/js/bootstrap.js') }}
+        {{ JS.push('lib/jquery-easing/jquery.easing.js') }}
+        {% endblock library_js %}
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
-
-        <!-- plugin for scrolling -->
-        <script src="js/jquery.easing.min.js"></script>
-
-        <!-- theme -->
-        <script src="js/theme.js"></script>
-
+        {% block maps %}
         {# Google maps: Specify any API key in the spreadsheet to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ #}
         {% if google_maps_api_key %}
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
         {% endif %}
+        {% endblock %}
+
+        {% block theme_js %}
+        {{ JS.push('js/theme.js') }}
+        {% endblock theme_js %}
+
+        {% block js %}
+        {% endblock js %}
+
+        {{ JS.render('js/bigread.min.js') }}
     </body>
 
 </html>
