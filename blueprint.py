@@ -132,19 +132,19 @@ def copy_files(site, git):
     Copy the files
     """
     puts('\nCopying files from blueprint\n')
-    style_dir = '{0}/styles'.format(site.path)
+    style_dir = '{0}/css'.format(site.path)
     os.mkdir(style_dir)
-    style_src_path = '{0}/_blueprint/styles/style.css'.format(site.path)
+    style_src_path = '{0}/_blueprint/css'.format(site.path)
     shutil.copy(style_src_path, style_dir)
-    git.add('styles/style.css')
-    git.commit(m='Add style.css')
+    git.add('css')
+    git.commit(m='Add css folder')
 
-    slide_dir = '{0}/_slides'.format(site.path)
-    os.mkdir(slide_dir)
-    slide_src_path = '{0}/_blueprint/_slides/example.md'.format(site.path)
-    shutil.copy(slide_src_path, slide_dir)
-    git.add('_slides/example.md')
-    git.commit(m='Add example slide content')
+    style_dir = '{0}/js'.format(site.path)
+    os.mkdir(style_dir)
+    style_src_path = '{0}/_blueprint/js'.format(site.path)
+    shutil.copy(style_src_path, style_dir)
+    git.add('js')
+    git.commit(m='Add js folder')
 
     bowerrc_src_path = '{0}/_blueprint/.bowerrc'.format(site.path)
     shutil.copy(bowerrc_src_path, site.path)
@@ -182,4 +182,3 @@ def smartypants_filter(text):
         return smartypants(text)
     else:
         return ''
-
