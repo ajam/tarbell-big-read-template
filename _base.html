@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{{ title|striptags }}{% endblock title %}</title>
+
+  {% block favicon %}
+  <link rel="shortcut icon" href="/favicon{% if preview_mode %}-preview{% endif %}.ico" />
+  {% endblock %}
+
+  {% block library_css %}
+  {{ CSS.push('lib/bootstrap/dist/css/bootstrap.css') }}
+  {{ CSS.push('lib/deck.js/core/deck.core.css') }}
+  {% if transition_style and transition_style != 'none' %}
+  {{ CSS.push('lib/deck.js/themes/transition/{0}.css'.format(transition_style)) }}
+  {% endif %}
+  {{ CSS.push('lib/fontawesome/css/font-awesome.css') }}
+  {{ CSS.push('styles/style.css') }}
+  {% endblock library_css %}
+
+  {% block css %}{% endblock %}
+
+  {{ CSS.render('css/style.min.css') }}
+
+  {% block opengraph %}
+  <meta property="og:url" content="http://{{ ROOT_URL }}/{% if PATH != 'index.html' %}{{ PATH }}{% endif %}" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{{ opengraph_image }}" />
+  <meta property="og:description" content="{{ opengraph_description }}" />
+  {% endblock opengraph %}
+
+  {% block meta %}
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  {% endblock meta %}
+</head>
+<body {% block bodyattrs %}class="page-{{ PATH[:-5] }}{% if use_nav %} has-nav{% endif %}"{% endblock bodyattrs %}>
+
+{% block head_scripts %}
+{{ JS.push('app/analytics.js') }}
+{{ JS.render('js/app-header.min.js') }}
+<script>
+TarbellAnalytics.init({
+  'GATrackerID': {% if google_analytics_id %}'{{ google_analytics_id }}'{% else %}null{% endif %},
+  'ChartbeatUID': {% if chartbeat_uid %}'{{ chartbeat_uid }}'{% else %}null{% endif %},
+  'ChartbeatDomain': {% if chartbeat_domain %}'{{ chartbeat_domain }}'{% else %}null{% endif %}
+});
+</script>
+{% endblock %}
+
+{% block nav %}
+{% if use_nav %}
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#{{ slides[0].id }}">{{ title }}</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse nav-collapse">
+      <ul class="nav navbar-nav">
+        {% for slide in slides[1:] %}
+        <li class="{{ slide.id }}"><a href="#{{ slide.id }}">{{ slide.title|process_text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endif %}
+{% endblock nav %}
+
+{% block content %}
+<div class="deck-container hidden">
+  {% for loop_index, slide in enumerate(slides) %}
+  <section class="slide slide-{{ slide.template }}{% if slide.class %} {{ slide.class }}{% endif %}" id="{{ slide.id }}">
+    {% include '_slide_templates/{0}.html'.format(slide.template) %}
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block library_scripts %}
+{{ JS.push('lib/deck.js/modernizr.custom.js') }}
+{{ JS.push('lib/jquery/dist/jquery.js') }}
+{{ JS.push('lib/deck.js/core/deck.core.js') }}
+{{ JS.push('lib/imgLiquid/js/imgLiquid.js') }}
+{{ JS.push('lib/bootstrap/dist/js/bootstrap.js') }}
+{{ JS.push('app/slideshow.js') }}
+{% endblock library_scripts %}
+
+{% block scripts %}{% endblock %}
+
+{{ JS.render('js/app-footer.min.js') }}
+
+{% block init_app %}
+<script>
+var slideshow;
+$(document).ready(function() {
+  TarbellSlideshow.init({
+    'useHashNavigation': {{ use_hash_navigation }}
+  });
+});
+</script>
+{% endblock %}
+
+</body>
+</html>
