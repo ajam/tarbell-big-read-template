@@ -135,14 +135,14 @@ def copy_files(site, git):
     style_dir = '{0}/css'.format(site.path)
     os.mkdir(style_dir)
     style_src_path = '{0}/_blueprint/css'.format(site.path)
-    shutil.copy(style_src_path, style_dir)
+    shutil.copytree(style_src_path, style_dir)
     git.add('css')
     git.commit(m='Add css folder')
 
     style_dir = '{0}/js'.format(site.path)
     os.mkdir(style_dir)
     style_src_path = '{0}/_blueprint/js'.format(site.path)
-    shutil.copy(style_src_path, style_dir)
+    shutil.copytree(style_src_path, style_dir)
     git.add('js')
     git.commit(m='Add js folder')
 
