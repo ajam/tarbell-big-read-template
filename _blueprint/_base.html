@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% block meta %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% endblock %}
+
+    <title>{{ title }}</title>
+
+    {# CSS libraries #}
+    {% block library_css %}
+    {{ CSS.push('lib/bootstrap/dist/css/bootstrap.css') }}
+    {% endblock library_css %}
+
+    {# Custom CSS: standard files #}
+    {% block theme_css %}
+    {{ CSS.push('css/theme.css') }}
+    {{ CSS.push('css/text-styles.css') }}
+    {% endblock theme_css %}
+
+    {# Custom CSS: Template override #}
+    {% block css %}
+    {% endblock css %}
+
+    {# Font libraries #}
+    {% block library_fonts %}
+    {{ CSS.push('lib/font-awesome/css/font-awesome.css') }}
+    {% endblock library_fonts %}
+
+    {# Custom fonts #}
+    {% block custom_fonts %}
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    {% endblock custom_fonts %}
+
+    {{ CSS.render('css/style.min.css') }}
+
+    {# HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+       WARNING: Respond.js doesn't work if you view the page via file:// #}
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+        {# Navigation block #}
+        {% block navigation %}
+        {% include '_navigation.html' %}
+        {% endblock navigation %}
+
+        {# Intro section #}
+        {% block intro %}
+        {% endblock %}
+
+        {% for chapter in chapters %}
+        <div id="{{ chapter.name }}" class="container content-section">
+          {{ render_file('_{0}.html'.format(chapter.name))|safe }}
+        </div>
+        {% endfor %}
+
+        {% block library_js %}
+        {{ JS.push('lib/jquery/dist/jquery.js') }}
+        {{ JS.push('lib/bootstrap/dist/js/bootstrap.js') }}
+        {{ JS.push('lib/jquery-easing/jquery.easing.js') }}
+        {% endblock library_js %}
+
+        {% block maps %}
+        {# Google maps: Specify any API key in the spreadsheet to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ #}
+        {% if google_maps_api_key %}
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+        {% endif %}
+        {% endblock %}
+
+        {% block theme_js %}
+        {{ JS.push('js/theme.js') }}
+        {% endblock theme_js %}
+
+        {% block js %}
+        {% endblock js %}
+
+        {{ JS.render('js/bigread.min.js') }}
+    </body>
+
+</html>
+
