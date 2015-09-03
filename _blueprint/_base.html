@@ -59,13 +59,13 @@
 
         {# Intro section #}
         {% block intro %}
+        {% include '_intro.html' %}
         {% endblock %}
 
-        {% for chapter in chapters %}
-        <div id="{{ chapter.name }}" class="container content-section">
-          {{ render_file('_{0}.html'.format(chapter.name))|safe }}
-        </div>
-        {% endfor %}
+        {# content section (text, photos, markup, etc.) #}
+        {% block content %}
+        {% include '_chapter1.html' %}
+        {% endblock %}
 
         {% block library_js %}
         {{ JS.push('lib/jquery/dist/jquery.js') }}
