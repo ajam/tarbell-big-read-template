@@ -1,0 +1,36 @@
+{% macro build_content() %}
+
+{% for row in content %}
+    {% set rowloop = loop %}
+    {% if row.content_type  == "text" %}
+        {{ build_text(row.value) }}
+    {% elif row.content_type  == "markup" %}
+        {{ build_markup(row.value) }}        
+    {% endif %}
+{% endfor %}
+
+{% endmacro %}
+
+
+
+
+{% macro build_text(text) %}
+<div class="row">
+    <div class="col-lg-7 col-lg-offset-1 first-panel">
+        <p>{{ text.replace("\n", "</p><p>") | safe }}</p>
+    </div>
+    <div class="col-lg-3">
+        <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+    </div>
+</div>
+{% endmacro %}
+
+
+
+{% macro build_markup(markup) %}
+    {% if markup | regex_match("^_.+\.html$") %} {# if markup references a .html file, then pull markup from there #}
+        {% include markup %}
+    {% else %}
+        {{ markup | safe }} {# otherwise, load markup directly in from the file #}
+    {% endif %}
+{% endmacro %}

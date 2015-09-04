@@ -6,6 +6,7 @@ import json
 import os
 import requests
 import shutil
+import re
 
 from clint.textui import colored, puts
 from cssmin import cssmin
@@ -186,3 +187,12 @@ def smartypants_filter(text):
         return smartypants(text)
     else:
         return ''
+
+# returns true/false if thing passed in matches a regex
+@blueprint.app_template_filter()
+def regex_match(string, regex):
+    print "hello"
+    print string
+    print regex
+    print bool(re.match(regex, string))
+    return bool(re.match(regex, string))

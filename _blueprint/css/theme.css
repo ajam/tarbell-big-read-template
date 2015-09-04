@@ -132,6 +132,10 @@
     text-shadow: 2px 2px #3E3E3E;
 }
 
+.row.bylines-container {
+    margin-top: 50px;
+}
+
 @media(min-width:768px) {
     .intro {
         height: 100%;
