@@ -64,7 +64,7 @@
     {# content section (text, photos, markup, etc.) #}
     {% block content %}
     {% include '_content.html' %}
-    {% endblock %}
+    {% endblock %}  
 
     {% block library_js %}
     {{ JS.push('lib/jquery/dist/jquery.js') }}
@@ -84,6 +84,11 @@
     {% block theme_js %}
     {{ JS.push('js/theme.js') }}
     {% endblock theme_js %}
+
+    {# analytics section #}
+    {% block analytics %}
+    {% include '_analytics.html' %}
+    {% endblock %}  
 
     {% block js %}
     {% endblock js %}
