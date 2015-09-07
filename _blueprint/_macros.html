@@ -7,7 +7,9 @@
     {% elif row.content_type  == "subhead" %}
         {{ build_subhead(row) }}    
     {% elif row.content_type  == "markup" %}
-        {{ build_markup(row.value) }}        
+        {{ build_markup(row.value) }}  
+    {% elif row.content_type  == "image" %}
+        {{ build_image(row) }}                  
     {% endif %}
 {% endfor %}
 
@@ -22,7 +24,7 @@
         <p>{{ text_row.value.replace("\n", "</p><p>") | safe }}</p>
     </div>
     {% if text_row.right_rail_id %}
-    <div class="col-lg-3">
+    <div class="col-lg-3" {% if right_rail|filter('right_rail_id', text_row.right_rail_id, 'id')|first %} id="{{ right_rail|filter('right_rail_id', text_row.right_rail_id, 'id')|first }}" {% endif %}>
        {{ build_right_rail(right_rail|filter('right_rail_id', text_row.right_rail_id)|first) }}
     </div>
     {% endif %}
@@ -57,4 +59,17 @@
     {% else %}
         {{ markup | safe }} {# otherwise, load markup directly in from the file #}
     {% endif %}
+{% endmacro %}
+
+
+
+{% macro build_image(image_row) %}
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <img class="img-full"src="img/intro-bg.jpg">
+        <img class="img-small-left" src="img/intro-bg.jpg">
+        <img class="img-small-right" src="img/intro-bg.jpg">
+        <div class="caption">This is a caption. Cat slap dog in face meow. Ears back wide eyed cat snacks. </div>
+    </div>
+</div>
 {% endmacro %}
