@@ -74,11 +74,11 @@ a:hover {
 
 .byline{
     text-align: left;
-    padding: 0 0 50px 0;
     color: #888888;
     font-size: 1.4em;
+    margin-bottom: 1em;
 }
-.bylines-container + .row .col-lg-7 p:first-child:first-letter {
+.bylines-container.bylines-top + .row .col-lg-7 p:first-child:first-letter {
     float: left;
     color: #888888;
     font-size: 93px;
