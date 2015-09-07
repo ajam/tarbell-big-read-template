@@ -132,6 +132,11 @@
     text-shadow: 2px 2px #3E3E3E;
 }
 
+#content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .row.bylines-container {
     margin-top: 50px;
 }

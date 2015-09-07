@@ -2,7 +2,17 @@
 
 {% block content %}
 
+<div id="content-container">
+
+<div class="row bylines-container">
+  <div class="col-lg-7 col-lg-offset-1">
+      <div class="byline">By Grumpy Cat</div>
+  </div>
+</div>
+
 {# Call loop to build content blocks #}
 {{ macros.build_content() }}
+
+</div>
 
 {% endblock %}
