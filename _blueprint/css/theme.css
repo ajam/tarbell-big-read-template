@@ -142,6 +142,87 @@
     margin-bottom: 50px;
 }
 
+/* Images */
+
+.full-image {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.full-image.third {
+    float: left;
+    width: 33.33333333%;
+    position: relative;
+    margin-top: 10px;
+}
+
+.full-image.third.left {
+    padding-right: 6.6666666666px;
+}
+
+.full-image.third.middle {
+    padding-left: 3.333333333px;
+    padding-right: 3.333333333px;
+}
+
+.full-image.third.right {
+    padding-left: 6.6666666666px;
+}
+
+.full-image.half {
+    float: left;
+    width: 50%;
+    position: relative;
+    margin-top: 10px;
+}
+
+.full-image.half.left {
+    padding-right: 5px;
+}
+
+.full-image.half.right {
+    padding-left: 5px;
+}
+
+.full-image.bottom {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.full-image img,
+.full-image video {
+    width: 100%;
+    float: left;
+}
+
+.caption {
+    padding-top: 15px;
+    color: #888888;
+    font-style: italic;
+    float:left;
+}
+
+/* Image expansion */
+.mfp-close {
+    cursor: pointer !important;
+}
+
+.expand-image {
+    cursor: -webkit-zoom-in; 
+    cursor: -moz-zoom-in;
+}
+
+img.ajmint-unveil {
+    opacity: 0;
+    -webkit-transition: opacity 500ms cubic-bezier(0, 0, 0.2, 1);
+    -moz-transition: opacity 500ms cubic-bezier(0, 0, 0.2, 1);
+    -o-transition: opacity 500ms cubic-bezier(0, 0, 0.2, 1);
+    -ms-transition: opacity 500ms cubic-bezier(0, 0, 0.2, 1);
+    transition: opacity 500ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
 @media(min-width:768px) {
     .intro {
         height: 100%;
