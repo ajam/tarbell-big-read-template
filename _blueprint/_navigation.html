@@ -18,7 +18,7 @@
               </li>
               {% for chapter in chapters %}
               <li>
-                  <a class="page-scroll" href="#{{ chapter.name }}">{{ chapter.title }}</a>
+                  <a class="page-scroll" href="{{ chapter.link }}">{{ chapter.name }}</a>
               </li>
               {% endfor %}
           </ul>
