@@ -11,7 +11,9 @@
     <meta name="author" content="">
     {% endblock %}
 
-    <title>{{ title }}</title>
+    {% block title %}
+    {% include '_title.html' %}
+    {% endblock %}
 
     {# CSS libraries #}
     {% block library_css %}
@@ -53,45 +55,45 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-        {# Navigation block #}
-        {% block navigation %}
-        {% include '_navigation.html' %}
-        {% endblock navigation %}
+    {# Navigation block #}
+    {% block navigation %}
+    {% include '_navigation.html' %}
+    {% endblock navigation %}
 
-        {# Intro section #}
-        {% block intro %}
-        {% include '_intro.html' %}
-        {% endblock %}
+    {# Intro section #}
+    {% block intro %}
+    {% include '_intro.html' %}
+    {% endblock %}
 
-        {# content section (text, photos, markup, etc.) #}
-        {% block content %}
-        {% include '_content.html' %}
-        {% endblock %}
+    {# content section (text, photos, markup, etc.) #}
+    {% block content %}
+    {% include '_content.html' %}
+    {% endblock %}
 
-        {% block library_js %}
-        {{ JS.push('lib/jquery/dist/jquery.js') }}
-        {{ JS.push('lib/bootstrap/dist/js/bootstrap.js') }}
-        {{ JS.push('lib/jquery-easing/jquery.easing.js') }}
-        {{ JS.push('lib/jquery-unveil/jquery.unveil.js') }}
-        {{ JS.push('lib/magnific-popup/dist/jquery.magnific-popup.js') }}
-        {% endblock library_js %}
+    {% block library_js %}
+    {{ JS.push('lib/jquery/dist/jquery.js') }}
+    {{ JS.push('lib/bootstrap/dist/js/bootstrap.js') }}
+    {{ JS.push('lib/jquery-easing/jquery.easing.js') }}
+    {{ JS.push('lib/jquery-unveil/jquery.unveil.js') }}
+    {{ JS.push('lib/magnific-popup/dist/jquery.magnific-popup.js') }}
+    {% endblock library_js %}
 
-        {% block maps %}
-        {# Google maps: Specify any API key in the spreadsheet to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ #}
-        {% if google_maps_api_key %}
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-        {% endif %}
-        {% endblock %}
+    {% block maps %}
+    {# Google maps: Specify any API key in the spreadsheet to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ #}
+    {% if google_maps_api_key %}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+    {% endif %}
+    {% endblock %}
 
-        {% block theme_js %}
-        {{ JS.push('js/theme.js') }}
-        {% endblock theme_js %}
+    {% block theme_js %}
+    {{ JS.push('js/theme.js') }}
+    {% endblock theme_js %}
 
-        {% block js %}
-        {% endblock js %}
+    {% block js %}
+    {% endblock js %}
 
-        {{ JS.render('js/bigread.min.js') }}
-    </body>
+    {{ JS.render('js/bigread.min.js') }}
+</body>
 
 </html>
 
