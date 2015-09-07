@@ -99,6 +99,12 @@ footer p {
 }
 
 
+/* Subhead */
+
+h2 {
+    margin-top: 1em;
+}
+
 /* Images */
 
 .img-full{
