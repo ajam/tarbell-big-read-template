@@ -138,7 +138,8 @@
 }
 
 .row.bylines-container {
-    margin: 50px 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 @media(min-width:768px) {
