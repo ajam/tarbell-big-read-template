@@ -17,6 +17,8 @@ from smartypants import smartypants
 from tarbell.hooks import register_hook
 from tarbell.utils import ensure_directory
 
+from tarbell.app import TEMPLATE_TYPES
+
 NAME = "Big Read Builder"
 
 EXCLUDES = [
