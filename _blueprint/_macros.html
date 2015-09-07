@@ -38,6 +38,8 @@
     <p>{{ right_rail_row.value | safe}}</p>
   {% elif right_rail_row.content_type == "markup" %}
     {{ build_markup(right_rail_row.value) }}
+{% elif right_rail_row.content_type == "image" %}
+    {{ build_images(right_rail_row) }}    
   {% endif %}
 {% endmacro %}
 
@@ -75,7 +77,6 @@
           </noscript> 
         </a>
         </div>
-
       {% else %}
         <p class="tarbell-error">ERROR WITH IMAGE LAYOUT</p> 
       {% endif %}
