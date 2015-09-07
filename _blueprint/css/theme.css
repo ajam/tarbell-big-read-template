@@ -71,6 +71,24 @@
     color: #ffffff;
 }
 
+.navbar-nav.social-buttons li span {
+    padding: 15px 0 15px 20px;
+    line-height: 20px;
+    display: block;
+    float: left;
+    font-size: 1.3em;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar-nav.social-buttons li span.fa-twitter:hover {
+    color: #4099FF;
+}
+
+.navbar-nav.social-buttons li span.fa-facebook:hover {
+    color: #3B5998;
+}
+
 @media(min-width:768px) {
     .navbar-custom {
         padding: 20px 0;
