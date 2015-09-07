@@ -191,8 +191,4 @@ def smartypants_filter(text):
 # returns true/false if thing passed in matches a regex
 @blueprint.app_template_filter()
 def regex_match(string, regex):
-    print "hello"
-    print string
-    print regex
-    print bool(re.match(regex, string))
     return bool(re.match(regex, string))
