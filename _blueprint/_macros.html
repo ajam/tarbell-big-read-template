@@ -1,15 +1,15 @@
-{% macro build_content(content) %}
+{% macro build_content(content, right_rail, images) %}
 
 {% for row in content %}
     {% set rowloop = loop %}
     {% if row.content_type  == "text" %}
-        {{ build_text(row) }}
+        {{ build_text(row, right_rail, images) }}
     {% elif row.content_type  == "subhead" %}
         {{ build_subhead(row) }}    
     {% elif row.content_type  == "markup" %}
         {{ build_markup(row.value) }}  
     {% elif row.content_type  == "image" %}
-        {{ build_images(row) }}                  
+        {{ build_images(row, images) }}                  
     {% endif %}
 {% endfor %}
 
@@ -18,14 +18,14 @@
 
 
 
-{% macro build_text(text_row) %}
+{% macro build_text(text_row, right_rail, images) %}
 <div class="row" {% if text_row.id %} id={{ text_row.id }} {% endif %}>
     <div class="col-lg-7 col-lg-offset-1">
         <p>{{ text_row.value.replace("\n", "</p><p>") | replaceMarkdownLinks | safe }}</p>
     </div>
     {% if text_row.right_rail_id %}
     <div class="col-lg-3" {% if right_rail|filter('right_rail_id', text_row.right_rail_id, 'id')|first %} id="{{ right_rail|filter('right_rail_id', text_row.right_rail_id, 'id')|first }}" {% endif %}>
-       {{ build_right_rail(right_rail|filter('right_rail_id', text_row.right_rail_id)|first) }}
+       {{ build_right_rail(right_rail|filter('right_rail_id', text_row.right_rail_id)|first, images) }}
     </div>
     {% endif %}
 </div>
@@ -33,13 +33,13 @@
 
 
 
-{% macro build_right_rail(right_rail_row) %}
+{% macro build_right_rail(right_rail_row, images) %}
   {% if right_rail_row.content_type == "text" %}
     <p>{{ right_rail_row.value | safe}}</p>
   {% elif right_rail_row.content_type == "markup" %}
     {{ build_markup(right_rail_row.value) }}
 {% elif right_rail_row.content_type == "image" %}
-    {{ build_images(right_rail_row) }}    
+    {{ build_images(right_rail_row, images) }}    
   {% endif %}
 {% endmacro %}
 
@@ -65,7 +65,7 @@
 
 
 
-{% macro build_images(image_row) %}
+{% macro build_images(image_row, images) %}
 <div class="row">
   <div class="col-lg-10 col-lg-offset-1">
     {% for image in images|filter('image_group', image_row.value) %}
