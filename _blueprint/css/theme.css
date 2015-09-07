@@ -71,7 +71,7 @@
     color: #ffffff;
 }
 
-.navbar-nav.social-buttons li span {
+.navbar-nav.social-buttons li span.bigread-social-btn {
     padding: 15px 0 15px 20px;
     line-height: 20px;
     display: block;
@@ -81,11 +81,11 @@
     cursor: pointer;
 }
 
-.navbar-nav.social-buttons li span.fa-twitter:hover {
+.navbar-nav.social-buttons li span.bigread-social-btn .fa-twitter:hover {
     color: #4099FF;
 }
 
-.navbar-nav.social-buttons li span.fa-facebook:hover {
+.navbar-nav.social-buttons li span.bigread-social-btn .fa-facebook:hover {
     color: #3B5998;
 }
 
