@@ -1,4 +1,4 @@
-{% macro build_content() %}
+{% macro build_content(content) %}
 
 {% for row in content %}
     {% set rowloop = loop %}
@@ -21,10 +21,22 @@
     <div class="col-lg-7 col-lg-offset-1">
         <p>{{ text_row.value.replace("\n", "</p><p>") | safe }}</p>
     </div>
+    {% if text_row.right_rail_id %}
     <div class="col-lg-3">
-        <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+       {{ build_right_rail(right_rail|filter('right_rail_id', text_row.right_rail_id)|first) }}
     </div>
+    {% endif %}
 </div>
+{% endmacro %}
+
+
+
+{% macro build_right_rail(right_rail_row) %}
+  {% if right_rail_row.content_type == "text" %}
+    <p>{{ right_rail_row.value | safe}}</p>
+  {% elif right_rail_row.content_type == "markup" %}
+    {{ build_markup(right_rail_row.value) }}
+  {% endif %}
 {% endmacro %}
 
 

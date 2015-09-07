@@ -188,7 +188,18 @@ def smartypants_filter(text):
     else:
         return ''
 
-# returns true/false if thing passed in matches a regex
+
+@blueprint.app_template_filter()
+def filter(list, attribute, value, return_attribute=None):
+    """Take a list and returns match objects (or list of attributes from those objects) where list object.attribute == value"""
+    if return_attribute == None:
+        matches = [match for match in list if match[attribute] == value ];
+    else:
+        matches = [match[return_attribute] for match in list if match[attribute] == value and return_attribute in match ];
+    return matches;
+
+
 @blueprint.app_template_filter()
 def regex_match(string, regex):
+    """returns true/false if thing passed in matches a regex"""
     return bool(re.match(regex, string))
