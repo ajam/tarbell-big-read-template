@@ -9,7 +9,7 @@
     {% elif row.content_type  == "markup" %}
         {{ build_markup(row.value) }}  
     {% elif row.content_type  == "image" %}
-        {{ build_image(row) }}                  
+        {{ build_images(row) }}                  
     {% endif %}
 {% endfor %}
 
@@ -63,13 +63,26 @@
 
 
 
-{% macro build_image(image_row) %}
+{% macro build_images(image_row) %}
 <div class="row">
-    <div class="col-lg-10 col-lg-offset-1">
-        <img class="img-full"src="img/intro-bg.jpg">
-        <img class="img-small-left" src="img/intro-bg.jpg">
-        <img class="img-small-right" src="img/intro-bg.jpg">
-        <div class="caption">This is a caption. Cat slap dog in face meow. Ears back wide eyed cat snacks. </div>
-    </div>
+  <div class="col-lg-10 col-lg-offset-1">
+    {% for image in images|filter('image_group', image_row.value) %}
+      {% if image.image_layout == "full" or image.image_layout == "half left" or image.image_layout == "half right" or image.image_layout == "third left" or image.image_layout == "third middle" or image.image_layout == "third right" %}
+        <div class="full-image {{ image.image_layout }}" id="{{ image.image_id }}"><a class="expand-image" href="{{ image.image_source }}">
+          <img class="ajmint-unveil" src="img/icons/loading.png" data-src="{{ image.image_source }}" /> 
+          <noscript>
+            <img src="{{ image.image_source }}" />
+          </noscript> 
+        </a>
+        </div>
+
+      {% else %}
+        <p class="tarbell-error">ERROR WITH IMAGE LAYOUT</p> 
+      {% endif %}
+    {% endfor %}
+    {% if images|filter('image_group', image_row.value, 'caption')|first %}
+    <div class="caption">{{ images|filter('image_group', image_row.value, 'caption') |first | replaceMarkdownLinks | safe }} <i>(Click to enlarge images)</i></div>
+    {% endif %}
+  </div>
 </div>
 {% endmacro %}

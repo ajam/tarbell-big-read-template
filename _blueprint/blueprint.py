@@ -203,3 +203,9 @@ def filter(list, attribute, value, return_attribute=None):
 def regex_match(string, regex):
     """returns true/false if thing passed in matches a regex"""
     return bool(re.match(regex, string))
+
+
+@blueprint.app_template_filter()
+def replaceMarkdownLinks(markdown):
+    """turns markdown links into anchor tags"""
+    return re.sub(r'\[([^\[]*?)\]\((.*?)\)', r'<a href="\2" target="_blank">\1</a>', markdown)    
