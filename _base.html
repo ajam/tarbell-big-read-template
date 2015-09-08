@@ -4,18 +4,17 @@
 <head>
 
     {% block meta %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    {% include '_meta.html' %}
     {% endblock %}
 
-    <title>{{ title }}</title>
+    {% block title %}
+    {% include '_title.html' %}
+    {% endblock %}
 
     {# CSS libraries #}
     {% block library_css %}
     {{ CSS.push('lib/bootstrap/dist/css/bootstrap.css') }}
+    {{ CSS.push('lib/magnific-popup/dist/magnific-popup.css') }}
     {% endblock library_css %}
 
     {# Custom CSS: standard files #}
@@ -52,43 +51,51 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-        {# Navigation block #}
-        {% block navigation %}
-        {% include '_navigation.html' %}
-        {% endblock navigation %}
+    {# Navigation block #}
+    {% block navigation %}
+    {% include '_navigation.html' %}
+    {% endblock navigation %}
 
-        {# Intro section #}
-        {% block intro %}
-        {% endblock %}
+    {# Intro section #}
+    {% block intro %}
+    {% include '_intro.html' %}
+    {% endblock %}
 
-        {% for chapter in chapters %}
-        <div id="{{ chapter.name }}" class="container content-section">
-          {{ render_file('_{0}.html'.format(chapter.name))|safe }}
-        </div>
-        {% endfor %}
+    {# content section (text, photos, markup, etc.) #}
+    {% block content %}
+    {% include '_content.html' %}
+    {% endblock %}  
 
-        {% block library_js %}
-        {{ JS.push('lib/jquery/dist/jquery.js') }}
-        {{ JS.push('lib/bootstrap/dist/js/bootstrap.js') }}
-        {{ JS.push('lib/jquery-easing/jquery.easing.js') }}
-        {% endblock library_js %}
+    {% block library_js %}
+    {{ JS.push('lib/jquery/dist/jquery.js') }}
+    {{ JS.push('lib/bootstrap/dist/js/bootstrap.js') }}
+    {{ JS.push('lib/jquery-easing/jquery.easing.js') }}
+    {{ JS.push('lib/jquery-unveil/jquery.unveil.js') }}
+    {{ JS.push('lib/magnific-popup/dist/jquery.magnific-popup.js') }}
+    {{ JS.push('js/social-buttons.js') }}
+    {% endblock library_js %}
 
-        {% block maps %}
-        {# Google maps: Specify any API key in the spreadsheet to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ #}
-        {% if google_maps_api_key %}
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-        {% endif %}
-        {% endblock %}
+    {% block maps %}
+    {# Google maps: Specify any API key in the spreadsheet to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ #}
+    {% if google_maps_api_key %}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+    {% endif %}
+    {% endblock %}
 
-        {% block theme_js %}
-        {{ JS.push('js/theme.js') }}
-        {% endblock theme_js %}
+    {% block theme_js %}
+    {{ JS.push('js/theme.js') }}
+    {% endblock theme_js %}
 
-        {% block js %}
-        {% endblock js %}
+    {# analytics section #}
+    {% block analytics %}
+    {% include '_analytics.html' %}
+    {% endblock %}  
 
-        {{ JS.render('js/bigread.min.js') }}
-    </body>
+    {% block js %}
+    {% endblock js %}
+
+    {{ JS.render('js/bigread.min.js') }}
+</body>
 
 </html>
 

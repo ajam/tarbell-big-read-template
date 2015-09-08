@@ -74,11 +74,11 @@ a:hover {
 
 .byline{
     text-align: left;
-    padding: 0 0 50px 0;
     color: #888888;
     font-size: 1.4em;
+    margin-bottom: 1em;
 }
-.first-panel p:first-child:first-letter {
+.bylines-container.bylines-top + .row .col-lg-7 p:first-child:first-letter {
     float: left;
     color: #888888;
     font-size: 93px;
@@ -99,32 +99,10 @@ footer p {
 }
 
 
-/* Images */
+/* Subhead */
 
-.img-full{
-    float:left;
-    width:100%;
-    padding: 15px 0 15px 0px;
-}
-
-.img-small-left, 
-.img-small-right{
-    float:left;
-    width:50%;
-}
-
-.img-small-left {
-    padding-right: 7.5px;
-}
-.img-small-right {
-    padding-left: 7.5px;
-}
-
-.caption {
-    padding-top: 15px;
-    color: #888888;
-    font-style: italic;
-    float:left;
+h2 {
+    margin-top: 1em;
 }
 
 

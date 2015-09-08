@@ -1,0 +1,29 @@
+{% import "_macros.html" as macros with context %}
+
+{% block content %}
+
+<div id="content-container">
+
+<div class="row bylines-container bylines-top">
+  <div class="col-lg-7 col-lg-offset-1">
+      {% for byline_row in bylines | filter('byline_position', 'top') %}
+      <div class="byline">{{ byline_row.role_prefix }} {% if byline_row.link %} <a href="{{ byline_row.link }}" target="_blank"> {% endif %} {{ byline_row.name }} {% if byline_row.link %} </a> {% endif %} {% if byline_row.miscellaneous %} {{ byline_row.miscellaneous }} {% endif %}</div>
+      {% endfor %}
+  </div>
+</div>
+
+{# Call loop to build content blocks #}
+{{ macros.build_content(content, right_rail, images) }}
+
+
+<div class="row bylines-container bylines-bottom">
+  <div class="col-lg-7 col-lg-offset-1">
+      {% for byline_row in bylines | filter('byline_position', 'bottom') %}
+      <div class="byline">{{ byline_row.role_prefix }} {% if byline_row.link %} <a href="{{ byline_row.link }}" target="_blank"> {% endif %} {{ byline_row.name }} {% if byline_row.link %} </a> {% endif %} {% if byline_row.miscellaneous %} {{ byline_row.miscellaneous }} {% endif %}</div>
+      {% endfor %}
+  </div>
+</div>
+
+</div>
+
+{% endblock %}

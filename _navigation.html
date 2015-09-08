@@ -5,7 +5,7 @@
               <i class="fa fa-bars"></i>
           </button>
           <a class="navbar-brand page-scroll" href="#page-top">
-              <i class="fa fa-newspaper-o"></i>  <span class="light">Your</span> Publication
+              <i class="fa fa-newspaper-o"></i>  <span class="light"> </span> {{ organization_name }}
           </a>
       </div>
 
@@ -18,10 +18,14 @@
               </li>
               {% for chapter in chapters %}
               <li>
-                  <a class="page-scroll" href="#{{ chapter.name }}">{{ chapter.title }}</a>
+                  <a class="page-scroll" href="{{ chapter.link }}">{{ chapter.name }}</a>
               </li>
               {% endfor %}
           </ul>
+          <ul class="nav navbar-nav social-buttons">
+             <li><span data-type="twitter" class="bigread-social-btn"><span class="fa fa-twitter"></span></span></li>
+             <li><span data-type="facebook" class="bigread-social-btn"><span class="fa fa-facebook"></span></span></li>
+          </ul>          
       </div>
       <!-- /.navbar-collapse -->
   </div>

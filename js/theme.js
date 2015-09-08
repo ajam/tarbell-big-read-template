@@ -30,4 +30,17 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 
+$('.expand-image').magnificPopup({
+    type:'image',
+    verticalFit: true,
+    closeOnContentClick: true,
+    closeBtnInside: true
+});
+
+$("img.ajmint-unveil").unveil($(window).height()*2, function() {
+    $(this).load(function() {
+        this.style.opacity = 1;
+    });
+});
+
 

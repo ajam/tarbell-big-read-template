@@ -1,32 +1,32 @@
 {% extends '_base.html' %}
 
 {% block meta %}
-{% set header = header %}
+{% set header = header2 %}
 
 {% include '_meta.html' %}
 {% endblock %}
 
 {# Customize title here #}
 {% block title %}
-{% set header = header %}
+{% set header = header2 %}
 
 {% include '_title.html' %}
 {% endblock %}
 
 {# Customize intro here #}
 {% block intro %}
-{% set header = header %}
+{% set header = header2 %}
 
 {% include '_intro.html' %}
 {% endblock %}
 
 {# Customize content. Modify right side of equals sign to match tab names in spreadsheet #}
 {% block content %}
-{% set header = header %}
-{% set content = content %}
-{% set right_rail = right_rail %}
-{% set images = images %}
-{% set bylines = bylines %}
+{% set header = header2 %}
+{% set content = content2 %}
+{% set right_rail = right_rail2 %}
+{% set images = images2 %}
+{% set bylines = bylines2 %}
 
 {% include '_content.html' %}
 {% include "_global-variables.html" %}

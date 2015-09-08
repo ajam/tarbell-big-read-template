@@ -6,6 +6,7 @@ import json
 import os
 import requests
 import shutil
+import re
 
 from clint.textui import colored, puts
 from cssmin import cssmin
@@ -15,6 +16,8 @@ from slimit import minify
 from smartypants import smartypants
 from tarbell.hooks import register_hook
 from tarbell.utils import ensure_directory
+
+from tarbell.app import TEMPLATE_TYPES
 
 NAME = "Big Read Builder"
 
@@ -28,6 +31,8 @@ EXCLUDES = [
 
 blueprint = Blueprint('base', __name__)
 
+TEMPLATE_TYPES.append("text/css")
+TEMPLATE_TYPES.append("application/javascript")
 
 class Includer(object):
     """
@@ -133,27 +138,11 @@ def copy_files(site, git):
     Copy the files
     """
     puts('\nCopying files from blueprint\n')
-    style_source = '{0}/_blueprint/css'.format(site.path)
-    style_destination = '{0}/css'.format(site.path)
-    shutil.copytree(style_source, style_destination)
-    git.add('css')
-    git.commit(m='Add css folder')
-
-    js_source = '{0}/_blueprint/js'.format(site.path)
-    js_destination = '{0}/js'.format(site.path)
-    shutil.copytree(js_source, js_destination)
-    git.add('js')
-    git.commit(m='Add js folder')
-
-    for chapter in glob.glob('{0}/_blueprint/_chapter*'.format(site.path)):
-        shutil.copy(chapter, site.path)
-    git.add('_chapter*')
-    git.commit(m='Add chapters')
-
-    bowerrc_src_path = '{0}/_blueprint/.bowerrc'.format(site.path)
-    shutil.copy(bowerrc_src_path, site.path)
-    git.add('.bowerrc')
-    git.commit(m='Add Bower configuration')
+    source = '{0}/_blueprint'.format(site.path)
+    dest = site.path
+    shutil.copytree(source, dest, ignore=['.py', '.xlsx'])
+    git.add('.')
+    git.commit(m='Add all AJAM\'s files')    
 
 
 @register_hook('newproject')
@@ -186,3 +175,25 @@ def smartypants_filter(text):
         return smartypants(text)
     else:
         return ''
+
+
+@blueprint.app_template_filter()
+def filter(list, attribute, value, return_attribute=None):
+    """Take a list and returns match objects (or list of attributes from those objects) where list object.attribute == value"""
+    if return_attribute == None:
+        matches = [match for match in list if match[attribute] == value ];
+    else:
+        matches = [match[return_attribute] for match in list if match[attribute] == value and return_attribute in match ];
+    return matches;
+
+
+@blueprint.app_template_filter()
+def regex_match(string, regex):
+    """returns true/false if thing passed in matches a regex"""
+    return bool(re.match(regex, string))
+
+
+@blueprint.app_template_filter()
+def replaceMarkdownLinks(markdown):
+    """turns markdown links into anchor tags"""
+    return re.sub(r'\[([^\[]*?)\]\((.*?)\)', r'<a href="\2" target="_blank">\1</a>', markdown)    

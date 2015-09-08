@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ header.opengraph_description.value }}">
+{% for author in bylines | filter('role_prefix', 'By') %}{% if author.name %}
+<meta name="author" content="{{ author.name }}">{% endif %}{% endfor %}
+
+<meta property="og:url" content="{{ header.opengraph_url.value }}" />
+<meta property="og:site_name" content="{{ og_site_name }}" />
+<meta property="og:title" content="{{ header.headline.value }}" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="{{ header.opengraph_image.value }}" />
+<meta property="og:image:width" content="{{ header.opengraph_image_width.value }}" />
+<meta property="og:image:height" content="{{ header.opengraph_image_height.value }}" />
+<meta property="og:description" content="{{ header.opengraph_description.value }}" />
+{% for author in bylines | filter('role_prefix', 'By') %}{% if author.facebook_profile_url %}
+<meta property="article:author" content="{{ author.facebook_profile_url }}" />{% endif %}{% endfor %}
+<meta property="article:publisher" content="{{ og_article_publisher_url }}" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{ twitter_site_handle }}">
+<meta name="twitter:title" content="{{ header.headline.value }}">
+<meta name="twitter:description" content="{{ header.subhead.value }}">
+<meta name="twitter:creator" content="">
+<meta name="twitter:image:src" content="{{ header.twitter_image.value }}"> <!-- at least 280px x 150px for Twitter (image must be < 1MB) -->
+<meta name="twitter:domain" content="{{ twitter_domain }}">
+<meta name="twitter:app:name:iphone" content="">
+<meta name="twitter:app:name:ipad" content="">
+<meta name="twitter:app:name:googleplay" content="">
+<meta name="twitter:app:url:iphone" content="">
+<meta name="twitter:app:url:ipad" content="">
+<meta name="twitter:app:url:googleplay" content="">
+<meta name="twitter:app:id:iphone" content="">
+<meta name="twitter:app:id:ipad" content="">
+<meta name="twitter:app:id:googleplay" content="">
