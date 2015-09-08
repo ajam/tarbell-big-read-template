@@ -14,6 +14,7 @@ from flask import g, Blueprint
 from jinja2 import Markup
 from slimit import minify
 from smartypants import smartypants
+from shutil import copytree, ignore_patterns
 from tarbell.hooks import register_hook
 from tarbell.utils import ensure_directory
 
