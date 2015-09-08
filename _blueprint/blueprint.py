@@ -138,27 +138,11 @@ def copy_files(site, git):
     Copy the files
     """
     puts('\nCopying files from blueprint\n')
-    style_source = '{0}/_blueprint/css'.format(site.path)
-    style_destination = '{0}/css'.format(site.path)
-    shutil.copytree(style_source, style_destination)
-    git.add('css')
-    git.commit(m='Add css folder')
-
-    js_source = '{0}/_blueprint/js'.format(site.path)
-    js_destination = '{0}/js'.format(site.path)
-    shutil.copytree(js_source, js_destination)
-    git.add('js')
-    git.commit(m='Add js folder')
-
-    for chapter in glob.glob('{0}/_blueprint/_chapter*'.format(site.path)):
-        shutil.copy(chapter, site.path)
-    git.add('_chapter*')
-    git.commit(m='Add chapters')
-
-    bowerrc_src_path = '{0}/_blueprint/.bowerrc'.format(site.path)
-    shutil.copy(bowerrc_src_path, site.path)
-    git.add('.bowerrc')
-    git.commit(m='Add Bower configuration')
+    source = '{0}/_blueprint'.format(site.path)
+    dest = site.path
+    shutil.copytree(source, dest, ignore=['.py', '.xlsx'])
+    git.add('.')
+    git.commit(m='Add all AJAM\'s files')    
 
 
 @register_hook('newproject')
