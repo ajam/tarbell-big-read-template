@@ -141,6 +141,8 @@ def copy_files(site, git):
     puts('\nCopying files from blueprint\n')
     source = '{0}/_blueprint'.format(site.path)
     dest = site.path
+    if os.path.exists(dest):
+        shutil.rmtree(dest)
     shutil.copytree(source, dest, ignore=ignore_patterns('*.pyc', '*.py', '*.xlsx'))
     git.add('.')
     git.commit(m='Add all AJAM\'s files')    
