@@ -194,7 +194,7 @@ def filter(list, attribute, value, return_attribute=None):
         matches = [match for match in list if match[attribute] == value ];
     else:
         matches = [match[return_attribute] for match in list if match[attribute] == value and return_attribute in match ];
-    return matches;
+    return matches
 
 
 @blueprint.app_template_filter()
