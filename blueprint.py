@@ -11,6 +11,7 @@ import re
 from clint.textui import colored, puts
 from cssmin import cssmin
 from flask import g, Blueprint
+from flask_frozen import walk_directory
 from jinja2 import Markup
 from slimit import minify
 from smartypants import smartypants
@@ -34,6 +35,8 @@ blueprint = Blueprint('base', __name__)
 
 TEMPLATE_TYPES.append("text/css")
 TEMPLATE_TYPES.append("application/javascript")
+
+IGNORE_PATTERNS = ('*.pyc', '*.py', '*.xlsx')
 
 class Includer(object):
     """
@@ -139,13 +142,17 @@ def copy_files(site, git):
     Copy the files
     """
     puts('\nCopying files from blueprint\n')
-    source = '{0}/_blueprint'.format(site.path)
-    dest = site.path
-    if os.path.exists(dest):
-        shutil.rmtree(dest)
-    shutil.copytree(source, dest, ignore=ignore_patterns('*.pyc', '*.py', '*.xlsx'))
+    source_root = '{0}/_blueprint'.format(site.path)
+    dest_root = site.path
+    for path in walk_directory(source_root, ignore=IGNORE_PATTERNS):
+        source = os.path.join(source_root, path)
+        dest = os.path.join(dest_root, path)
+        dest_dir = os.path.dirname(dest)
+        if not os.path.isdir(dest_dir):
+            os.makedirs(dest_dir)
+        shutil.copy2(source, dest)
     git.add('.')
-    git.commit(m='Add all AJAM\'s files')    
+    git.commit(m='Add all AJAM\'s files')
 
 
 @register_hook('newproject')
