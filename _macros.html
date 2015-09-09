@@ -20,11 +20,11 @@
 
 {% macro build_text(text_row, right_rail, images) %}
 <div class="row" {% if text_row.id %} id={{ text_row.id }} {% endif %}>
-    <div class="col-lg-7 col-lg-offset-1">
+    <div class="col-sm-7 col-sm-offset-1 col-xs-10 col-xs-offset-1">
         <p>{{ text_row.value.replace("\n", "</p><p>") | replaceMarkdownLinks | safe }}</p>
     </div>
     {% if text_row.right_rail_id %}
-    <div class="col-lg-3" {% if right_rail|filter('right_rail_id', text_row.right_rail_id, 'id')|first %} id="{{ right_rail|filter('right_rail_id', text_row.right_rail_id, 'id')|first }}" {% endif %}>
+    <div class="col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1" {% if right_rail|filter('right_rail_id', text_row.right_rail_id, 'id')|first %} id="{{ right_rail|filter('right_rail_id', text_row.right_rail_id, 'id')|first }}" {% endif %}>
        {{ build_right_rail(right_rail|filter('right_rail_id', text_row.right_rail_id)|first, images) }}
     </div>
     {% endif %}
@@ -39,7 +39,7 @@
   {% elif right_rail_row.content_type == "markup" %}
     {{ build_markup(right_rail_row.value) }}
 {% elif right_rail_row.content_type == "image" %}
-    {{ build_images(right_rail_row, images) }}    
+    {{ load_images(right_rail_row, images) }}    
   {% endif %}
 {% endmacro %}
 
@@ -47,7 +47,7 @@
 
 {% macro build_subhead(subhead_row) %}
 <div class="row" {% if subhead_row.id %} id={{ subhead_row.id }} {% endif %}>
-    <div class="col-lg-7 col-lg-offset-1">
+    <div class="col-sm-7 col-sm-offset-1 col-xs-10 col-xs-offset-1">
         <h2>{{ subhead_row.value }}</h2>
     </div>
 </div>
@@ -67,23 +67,29 @@
 
 {% macro build_images(image_row, images) %}
 <div class="row">
-  <div class="col-lg-10 col-lg-offset-1">
-    {% for image in images|filter('image_group', image_row.value) %}
-      {% if image.image_layout == "full" or image.image_layout == "half left" or image.image_layout == "half right" or image.image_layout == "third left" or image.image_layout == "third middle" or image.image_layout == "third right" %}
-        <div class="full-image {{ image.image_layout }}" id="{{ image.image_id }}"><a class="expand-image" href="{{ image.image_source }}">
-          <img class="ajmint-unveil" src="img/icons/loading.png" data-src="{{ image.image_source }}" /> 
-          <noscript>
-            <img src="{{ image.image_source }}" />
-          </noscript> 
-        </a>
-        </div>
-      {% else %}
-        <p class="tarbell-error">ERROR WITH IMAGE LAYOUT</p> 
-      {% endif %}
-    {% endfor %}
-    {% if images|filter('image_group', image_row.value, 'caption')|first %}
-    <div class="caption">{{ images|filter('image_group', image_row.value, 'caption') |first | replaceMarkdownLinks | safe }} <i>(Click to enlarge images)</i></div>
-    {% endif %}
+  <div class="col-xs-10 col-xs-offset-1">
+    {{ load_images(image_row, images) }}
   </div>
 </div>
+{% endmacro %}
+
+
+
+{% macro load_images(image_row, images) %}
+  {% for image in images|filter('image_group', image_row.value) %}
+    {% if image.image_layout == "full" or image.image_layout == "half left" or image.image_layout == "half right" or image.image_layout == "third left" or image.image_layout == "third middle" or image.image_layout == "third right" %}
+      <div class="full-image {{ image.image_layout }}" id="{{ image.image_id }}"><a class="expand-image" href="{{ image.image_source }}">
+        <img class="ajmint-unveil" src="img/icons/loading.png" data-src="{{ image.image_source }}" /> 
+        <noscript>
+          <img src="{{ image.image_source }}" />
+        </noscript> 
+      </a>
+      </div>
+    {% else %}
+      <p class="tarbell-error">ERROR WITH IMAGE LAYOUT</p> 
+    {% endif %}
+  {% endfor %}
+  {% if images|filter('image_group', image_row.value, 'caption')|first %}
+  <div class="caption">{{ images|filter('image_group', image_row.value, 'caption') |first | replaceMarkdownLinks | safe }} <i>(Click to enlarge images)</i></div>
+  {% endif %}
 {% endmacro %}
