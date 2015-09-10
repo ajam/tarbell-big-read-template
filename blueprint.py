@@ -36,7 +36,7 @@ blueprint = Blueprint('base', __name__)
 TEMPLATE_TYPES.append("text/css")
 TEMPLATE_TYPES.append("application/javascript")
 
-IGNORE_PATTERNS = ('*.pyc', '*.py', '*.xlsx')
+IGNORE_PATTERNS = ('*.pyc', '*.xlsx')
 
 class Includer(object):
     """
