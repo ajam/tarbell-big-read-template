@@ -47,7 +47,7 @@ Some includes:
 Example content:
 
 * `_example-markup-file.html`: Example of included markup content/
-* `_story2.html`: More example content.
+* `story2.html`: A second page.
 
 Asset directories:
 
