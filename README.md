@@ -54,17 +54,29 @@ Asset directories:
 * `fonts`: Web fonts.
 * `img`: Images go here.
 
-Scripts and styles:
+Libraries:
 
 * `lib`: CSS & Javascript libraries
-* `css`: Custom & rendered CSS
-* `js`: Custom & rendered Javascript
+
+If you have [Bower](http://bower.io) installed, new libraries can be installed with `bower install <library-name>`.
+
+Styles:
+
+* `css`: Custom & rendered CSS.
+* `css/text-styles.css`: Text & typographic styles
+* `css/theme.css`: Page design
+
+Scripts:
+
+* `js`: Custom & rendered Javascript.
+* `js/social-buttons.js`: Social button interaction.
+* `js/theme.js`: Page-specific interactivity.
 
 Configuration and docs:
 
 * `tarbell_config.py`: Tarbell configuration
 * `README.md`: What you're reading. Please help improve it!
-* `LICENSE`: How to share
+* `LICENSE`: How to share.
 
 ## Support
 
