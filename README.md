@@ -69,6 +69,7 @@ Styles:
 Scripts:
 
 * `js`: Custom & rendered Javascript.
+* `js/analytics.js`: Wraps up analytics in a single API.
 * `js/social-buttons.js`: Social button interaction.
 * `js/theme.js`: Page-specific interactivity.
 

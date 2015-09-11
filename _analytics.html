@@ -1,42 +1,9 @@
-{# Chartbeat #}
-{% if chartbeat_uid and chartbeat_domain %}
-<script type='text/javascript'>
-    var _sf_async_config={};
-    /** CONFIGURATION START **/
-    _sf_async_config.uid = {{ chartbeat_uid }};
-    _sf_async_config.domain = '{{ chartbeat_domain }}';
-    _sf_async_config.useCanonical = true;
-    
-    
-    /** CONFIGURATION END **/
-    (function(){
-        function loadChartbeat() {
-            window._sf_endpt=(new Date()).getTime();
-            var e = document.createElement("script");
-            e.setAttribute("language", "javascript");
-            e.setAttribute("type", "text/javascript");
-            e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
-            document.body.appendChild(e);
-        }
-        var oldonload = window.onload;
-        window.onload = (typeof window.onload != "function") ?
-                loadChartbeat : function() { oldonload(); loadChartbeat(); };
-    })();
-</script>
-{% endif %}
-
-
-{# Google Analytics #}
-{% if google_analytics_id %}
+{{ JS.push('js/analytics.js') }}
+{{ JS.render('js/app-header.min.js') }}
 <script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '{{ google_analytics_id }}']);
-  _gaq.push(['_trackPageview']);
-  
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+BigreadAnalytics.init({
+  'GATrackerID': {% if google_analytics_id %}'{{ google_analytics_id }}'{% else %}null{% endif %},
+  'ChartbeatUID': {% if chartbeat_uid %}'{{ chartbeat_uid }}'{% else %}null{% endif %},
+  'ChartbeatDomain': {% if chartbeat_domain %}'{{ chartbeat_domain }}'{% else %}null{% endif %}
+});
 </script>
-{% endif %}
