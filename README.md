@@ -19,6 +19,14 @@
 
 3. Run `tarbell newproject` and select the Big Read blueprint.
 
+
+## Working with Tarbell
+
+After creating a new project using `tarbell newproject`, you can begin putting in content through your Spreadsheet. To preview the changes you make to your spreadsheet, run `tarbell serve` in the folder where you project lives and open your browser to `localhost:5000`. You should see a dummy page.
+
+(For more information, check out the main [Tarbell site](http://tarbell.io))
+
+
 ## Using the template
 
 (Note: Directions for using this template is specific to the template in this repository, not all Tarbell templates)
@@ -110,6 +118,25 @@ column in bylines | possible values | description
 `byline_position` | `top` or `bottom` | specifies whether you want the byline at the top of the piece or the bottom of the page
 `_notes` | `text` | Anything you want. Isn't being used.
 
+
+
+### Publishing a Tarbell project
+
+1. Run `tarbell generate _output`. This will generate the files you will upload to your server in a folder called _output in your project folder.
+2. Deploy your `_output` files the way your news organization normally does. You can also use the built-in `tarbell publish <target>` command in Tarbell to move your files onto your staging and production servers.
+
+
+
+## Creating multiple pages 
+
+1. Rename `_story2.html` to `story2.html` or a better, more SEO-friendly name. 
+2. Duplicate the following sheets in your spreadsheet and rename them all with the same suffix: `header`, `content`, `right_rail`, `images`, `bylines` (e.g. `header` to `header2`)
+3. For each additional page (like `story2.html`), do the following:
+    - In `story2.html`, change `header2`, `bylines2`, `content2`, `images2` and `right_rail2` so they match your Google Spreadsheet sheet names that you chose in step 2.
+4. Repeat for any additional pages you may need.
+
+
+## Breaking down the template files
 
 
 
