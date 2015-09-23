@@ -120,7 +120,7 @@ column in bylines | possible values | description
 
 
 
-### Publishing a Tarbell project
+## Publishing a Tarbell project
 
 1. Run `tarbell generate _output`. This will generate the files you will upload to your server in a folder called _output in your project folder.
 2. Deploy your `_output` files the way your news organization normally does. You can also use the built-in `tarbell publish <target>` command in Tarbell to move your files onto your staging and production servers.
