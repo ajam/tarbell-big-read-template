@@ -1,42 +1,44 @@
 # Big Read Builder
 
 ## Install & setup
+Warning: This install process looks intense, but you only have to do it once. After all this is installed, you can literally spin up a project in minutes. 
 
 Tarbell requires the following:
 
-1. python
+1. Python. To make sure you have this, open the Terminal/command line and type `which python`. If you don't have it (you probably do), [follow these download instructions](https://www.python.org/downloads/). 
 
-2. pip
+2. pip. Pip comes packaged with Python 2.7.9 and 3.4, so you also probably have this. To check if this is installed, type `which pip`. Otherwise, [install here](https://pip.pypa.io/en/latest/installing/). 
 
-3. virtualenv
+3. [virtualenv](https://virtualenv.pypa.io/en/latest/). To check for this, type `which virtualenv`.
 
     1. Install virtualenv with `[sudo] pip install virtualenv`
     2. Run `which virtualenv`. On a Mac, it should read `/usr/local/bin/virtualenv`.
-    3. Install virtualenvwrapper with `[sudo] pip install virtualenvwrapper`
-    4. Copy the following into your shell file (e.g. `~/.bash_profile`): `export WORKON_HOME=$HOME/.virtualenvs; export PROJECT_HOME=$HOME/Devel; source /usr/local/bin/virtualenvwrapper.sh`
-    5. Close your shell and open it again.
-    6. Make a new virtualenv by typing in `mkvirtualenv tarbell1.0.4` (you can replace `tarbell1.0.4` with anything you want to name your virtualenv).
 
-4. virtualenvwrapper (optional, but highly recommended)
+4. [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/install.html#basic-installation) (optional, but highly recommended)
+    
+    1. Install virtualenvwrapper with `[sudo] pip install virtualenvwrapper` (Typing which
+    2. Copy the following into your shell file (e.g. `~/.bash_profile`): `export WORKON_HOME=$HOME/.virtualenvs; export PROJECT_HOME=$HOME/Devel; source /usr/local/bin/virtualenvwrapper.sh`
+    3. Close your shell and open it again.
 
 
 Once you've installed the above, install Tarbell!
 
-1. First, install [Tarbell](http://tarbell.io). Using a virtualenv is recommended.
+1. Make a new virtualenv by typing in `mkvirtualenv tarbell1.0.4` (You can replace `tarbell1.0.4` with anything you want to name your virtualenv). Tarbell1.0.4 is simply the newest version of Tarbell. 
+2. Then, install [Tarbell](http://tarbell.io). Using a virtualenv is recommended because it helps you isolate different versions of Tarbell and it's dependencies. As new versions come out, you want to be able to separate the older from the new. 
 
     1. Now install Tarbell into your virtualenv by running `pip install tarbell`
     2. Expand your terminal window so that it fills your screen (there's a bug that occurs if your text overflows over one line).
     3. Configure tarbell with `tarbell configure`. Follow the directions at [http://tarbell.readthedocs.org/en/1.0.4/install.html](http://tarbell.readthedocs.org/en/1.0.4/install.html)
 
 2. Install the blueprint: `tarbell install-blueprint https://github.com/ajam/tarbell-big-read-template.git`
-(**NOTE**: until the project is public, use: `tarbell install blueprint git@github.com:ajam/tarbell-big-read-template.git`)
+(**NOTE**: until the project is public, use: `tarbell install blueprint git@github.com:ajam/tarbell-big-read-template.git`). The blueprint is the actual HTML and CSS template.
 
 3. Run `tarbell newproject` and select the Big Read blueprint.
 
 
 ## Working with Tarbell
 
-After creating a new project using `tarbell newproject`, you can begin putting in content through your Spreadsheet. To preview the changes you make to your spreadsheet, run `tarbell serve` in the folder where you project lives and open your browser to `localhost:5000`. You should see a dummy page.
+Create a new project using `tarbell newproject`. If you use Google Spreadsheets, this command will create a new spreadsheet and send you an invitation to edit. You can begin putting in content through your Spreadsheet. To preview the changes you make to your spreadsheet, run `tarbell serve` in the folder where you project lives and open your browser to `localhost:5000`. Your project preview is there. Anytime you make a change to the spreadsheet, simply refresh your browswer window. 
 
 (For more information, check out the main [Tarbell site](http://tarbell.io))
 
