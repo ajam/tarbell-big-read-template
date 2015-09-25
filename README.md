@@ -2,7 +2,13 @@
 
 ## Install & setup
 
-1. First, install [Tarbell](http://tarbell.io). Using a virtualenv is recommended.
+Tarbell requires the following:
+
+1. python
+
+2. pip
+
+3. virtualenv
 
     1. Install virtualenv with `[sudo] pip install virtualenv`
     2. Run `which virtualenv`. On a Mac, it should read `/usr/local/bin/virtualenv`.
@@ -10,9 +16,17 @@
     4. Copy the following into your shell file (e.g. `~/.bash_profile`): `export WORKON_HOME=$HOME/.virtualenvs; export PROJECT_HOME=$HOME/Devel; source /usr/local/bin/virtualenvwrapper.sh`
     5. Close your shell and open it again.
     6. Make a new virtualenv by typing in `mkvirtualenv tarbell1.0.4` (you can replace `tarbell1.0.4` with anything you want to name your virtualenv).
-    7. Now install Tarbell into your virtualenv by running `pip install tarbell`
-    8. Expand your terminal window so that it fills your screen (there's a bug that occurs if your text overflows over one line).
-    9. Configure tarbell with `tarbell configure`. Follow the directions at [http://tarbell.readthedocs.org/en/1.0.4/install.html](http://tarbell.readthedocs.org/en/1.0.4/install.html)
+
+4. virtualenvwrapper (optional, but highly recommended)
+
+
+Once you've installed the above, install Tarbell!
+
+1. First, install [Tarbell](http://tarbell.io). Using a virtualenv is recommended.
+
+    1. Now install Tarbell into your virtualenv by running `pip install tarbell`
+    2. Expand your terminal window so that it fills your screen (there's a bug that occurs if your text overflows over one line).
+    3. Configure tarbell with `tarbell configure`. Follow the directions at [http://tarbell.readthedocs.org/en/1.0.4/install.html](http://tarbell.readthedocs.org/en/1.0.4/install.html)
 
 2. Install the blueprint: `tarbell install-blueprint https://github.com/ajam/tarbell-big-read-template.git`
 (**NOTE**: until the project is public, use: `tarbell install blueprint git@github.com:ajam/tarbell-big-read-template.git`)
