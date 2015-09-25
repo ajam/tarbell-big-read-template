@@ -12,7 +12,7 @@
     6. Make a new virtualenv by typing in `mkvirtualenv tarbell1.0.3` (you can replace `tarbell1.0.3` with anything you want to name your virtualenv).
     7. Now install Tarbell into your virtualenv by running `pip install tarbell`
     8. Expand your terminal window so that it fills your screen (there's a bug that occurs if your text overflows over one line).
-    9. Configure tarbell with `tarbell configure`. Follow the directions at [http://tarbell.readthedocs.org/en/1.0.3/install.html](http://tarbell.readthedocs.org/en/1.0.3/install.html)
+    9. Configure tarbell with `tarbell configure`. Follow the directions at [http://tarbell.readthedocs.org/en/1.0.4/install.html](http://tarbell.readthedocs.org/en/1.0.4/install.html)
 
 2. Install the blueprint: `tarbell install-blueprint https://github.com/ajam/tarbell-big-read-template.git`
 (**NOTE**: until the project is public, use: `tarbell install blueprint git@github.com:ajam/tarbell-big-read-template.git`)
@@ -142,61 +142,6 @@ file name | description
 ---|---|---
 
 
-
-## What's in here?
-
-A single page:
-
-* `index.html`: The page. Start editing here.
-
-A base template:
-
-* `_base.html`: The root project template.
-
-Some includes:
-
-* `_analytics.html`: Chartbeat and Google Analytics configuration.
-* `_content.html`: Page content.
-* `_global-variables.html`: Global Javascript variables.
-* `_macros.html`: Jinja macros.
-* `_meta.html`: Meta tags.
-* `_navigation.html`: Page navigation.
-* `_title.html`: Page title.
-
-Example content:
-
-* `_example-markup-file.html`: Example of included markup content/
-* `story2.html`: A second page.
-
-Asset directories:
-
-* `fonts`: Web fonts.
-* `img`: Images go here.
-
-Libraries:
-
-* `lib`: CSS & Javascript libraries
-
-If you have [Bower](http://bower.io) installed, new libraries can be installed with `bower install <library-name>`.
-
-Styles:
-
-* `css`: Custom & rendered CSS.
-* `css/text-styles.css`: Text & typographic styles
-* `css/theme.css`: Page design
-
-Scripts:
-
-* `js`: Custom & rendered Javascript.
-* `js/analytics.js`: Wraps up analytics in a single API.
-* `js/social-buttons.js`: Social button interaction.
-* `js/theme.js`: Page-specific interactivity.
-
-Configuration and docs:
-
-* `tarbell_config.py`: Tarbell configuration
-* `README.md`: What you're reading. Please help improve it!
-* `LICENSE`: How to share.
 
 ## Support
 
