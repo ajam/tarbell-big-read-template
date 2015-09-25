@@ -138,9 +138,32 @@ column in bylines | possible values | description
 
 ## Breaking down the template files
 
+(Note: You don't need to know any of the following to use the template. These are just useful notes in case you want to modify the template.)
+
+#### How files are organized
+
+
+
+#### List of files
+
+Tarbell using [Jinja2](http://jinja.pocoo.org/docs/dev/#) as its templating engine. Jinja2 is 
+
 file name | description
 ---|---|---
-
+`_analytics.html` | Code snippets for analytics (e.g. Google Analytics & Chartbeat)
+`_base.html` | Code snippet to connect all code snippets together into one page
+`_content.html` | Code snippets for all the content on the page under the intro
+`_example-markup-file.html` | An example file with markup
+`_global-variables.html` | Variables that your javascript reference should be put into global variables within HTML here. It's generally bad practice to put javascript variables in your markup, but this allows you to use one javascript template file and apply it to multiple HTML pages.
+`_intro.html` | Code snippets to create the top image + headline + subhead
+`_macros.html` | This file does the heavy lifting. 
+`_meta.html` | Code snippets for HTML meta tags (e.g. open graph tags, twitter tags)
+`_navigation.html` | Code for the top navigation header bar
+`_spreadsheet.xlsx` | This spreadsheet holds the template spreadsheet file for this particular Tarbell layout template (same as the Google Spreadsheet that gets created when you start a new project)
+`_story2.html` | A demo page for how to create new HTML pages within one project (e.g. with one spreadsheet)
+`_title.html` | Holds the <title></title> tag
+`blueprint.py` | Holds python functions (called "filters" in Jinja) that can help you manipulate content in your template. Holds some of the python scripts that make Tarbell work. 
+`index.html` | 
 
 
 ## Support
