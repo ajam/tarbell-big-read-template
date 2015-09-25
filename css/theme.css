@@ -242,6 +242,10 @@ img.ajmint-unveil {
 
 
 @media(min-width:768px) {
+    .panel0-container{
+        margin-top: 50px;
+    }
+
     .intro {
         height: 100%;
         padding: 0;
