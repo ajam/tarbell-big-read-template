@@ -48,7 +48,7 @@ Once you've installed the above, install Tarbell!
 
 ## Working with Tarbell
 
-Create a new project using `tarbell newproject`. If you use Google Spreadsheets, this command will create a new spreadsheet and send you an invitation to edit. You can begin putting in content through your Spreadsheet. To preview the changes you make to your spreadsheet, run `tarbell serve` in the folder where you project lives and open your browser to `localhost:5000`. Your project preview is there. Anytime you make a change to the spreadsheet, simply refresh your browser window. 
+If you installed Tarbell into a virtualenv, go into your virtualenv by typing in `workon <name of virtualenv>` (e.g. `workon tarbell1.0.4`). Create a new project using `tarbell newproject`. If you use Google Spreadsheets, this command will create a new spreadsheet and send you an invitation to edit. You can begin putting in content through your Spreadsheet. To preview the changes you make to your spreadsheet, run `tarbell serve` in the folder where you project lives and open your browser to `localhost:5000`. Your project preview is there. Anytime you make a change to the spreadsheet, simply refresh your browser window. 
 
 (For more information, check out the main [Tarbell site](http://tarbell.io))
 
