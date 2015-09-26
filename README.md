@@ -149,29 +149,24 @@ column in bylines | possible values | description
 
 ## Publishing a Tarbell project
 
-1. Run `tarbell generate _output`. This will generate the files you will upload to your server in a folder called _output in your project folder.
-2. Deploy your `_output` files the way your news organization normally does. You can also use the built-in `tarbell publish <target>` command in Tarbell to move your files onto your staging and production servers.
+1. Run `tarbell generate _output`. This takes the template and your spreadsheet and bakes a standalone folder with the main index file, and all necessary JS, CSS, images and other assets. 
+2. Take the contents of your _output folder and upload these to a server (example: projects.aljazeera.com). You can also use the built-in `tarbell publish <target>` command in Tarbell to move your files onto your staging and production servers.
 
 
 
 ## Creating multiple pages 
 
-(In late October 2015, we will have a better and easier way of creating multiple pages. The directions below, however, do work for now.)
+(In late October 2015, Tarbell will have a better and easier way of creating multiple pages. The directions below, however, do work for now.)
 
 1. Rename `_story2.html` to `story2.html` or a better, more SEO-friendly name. 
-2. Duplicate the following sheets in your spreadsheet and rename them all with the same suffix: `header`, `content`, `right_rail`, `images`, `bylines` (e.g. `header` to `header2`)
-3. For each additional page (like `story2.html`), do the following:
-    - In `story2.html`, change `header2`, `bylines2`, `content2`, `images2` and `right_rail2` so they match your Google Spreadsheet sheet names that you chose in step 2.
+2. Duplicate the following sheets in your spreadsheet and rename them all with the same suffix: `header` to `header2`, `content` to `content2`, `right_rail` to `right_rail2`, `images` to `images2`, `bylines` to `bylines2`. 
+3. In `story2.html`, add the suffix from the Google Spreadsheet so that the tab names match the variables: `header2`, `bylines2`, `content2`, `images2` and `right_rail2`.
 4. Repeat for any additional pages you may need.
 
 
 ## Breaking down the template files
 
 (Note: You don't need to know any of the following to use the template. These are just useful notes in case you want to modify the template.)
-
-#### How files are organized
-
-
 
 #### List of files
 
