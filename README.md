@@ -41,8 +41,7 @@ Once you've installed the above, install Tarbell!
     2. Expand your terminal window so that it fills your screen (there's a bug that occurs if your text overflows over one line).
     3. Configure tarbell with `tarbell configure`. Follow the directions at [http://tarbell.readthedocs.org/en/1.0.4/install.html](http://tarbell.readthedocs.org/en/1.0.4/install.html)
 
-2. Install the blueprint: `tarbell install-blueprint https://github.com/ajam/tarbell-big-read-template.git`
-(**NOTE**: until the project is public, use: `tarbell install blueprint git@github.com:ajam/tarbell-big-read-template.git`). The blueprint is the actual HTML and CSS template.
+2. Install the blueprint: `tarbell install-blueprint https://github.com/ajam/tarbell-big-read-template.git`. The blueprint is the actual HTML and CSS template.
 
 3. Run `tarbell newproject` and select the Big Read blueprint.
 
