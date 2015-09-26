@@ -49,7 +49,7 @@ Once you've installed the above, install Tarbell!
 
 ## Working with Tarbell
 
-Create a new project using `tarbell newproject`. If you use Google Spreadsheets, this command will create a new spreadsheet and send you an invitation to edit. You can begin putting in content through your Spreadsheet. To preview the changes you make to your spreadsheet, run `tarbell serve` in the folder where you project lives and open your browser to `localhost:5000`. Your project preview is there. Anytime you make a change to the spreadsheet, simply refresh your browswer window. 
+Create a new project using `tarbell newproject`. If you use Google Spreadsheets, this command will create a new spreadsheet and send you an invitation to edit. You can begin putting in content through your Spreadsheet. To preview the changes you make to your spreadsheet, run `tarbell serve` in the folder where you project lives and open your browser to `localhost:5000`. Your project preview is there. Anytime you make a change to the spreadsheet, simply refresh your browser window. 
 
 (For more information, check out the main [Tarbell site](http://tarbell.io))
 
@@ -58,7 +58,7 @@ Create a new project using `tarbell newproject`. If you use Google Spreadsheets,
 
 (Note: Directions for using this template is specific to the template in this repository, not all Tarbell templates)
 
-Generating a new project with `tarbell newproject` should generate a Google Spreadsheet for you. Your Google Spreadsheet should have the following sheets. Do not modify any sheet names (order of the sheets does not matter).
+Generating a new project with `tarbell newproject` should generate a Google Spreadsheet for you. Your Google Spreadsheet should have the following sheets. Do not modify any sheet names (order of the sheets does not matter). Do not change any headers in the sheets. (If you encounter an inexplicable error, it's likely someone accidentally changed the name of a header.)
 
 Sheet name | Description
 --- | ---
