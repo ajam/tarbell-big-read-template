@@ -242,9 +242,6 @@ img.ajmint-unveil {
 
 
 @media(min-width:768px) {
-    .panel0-container{
-        margin-top: 50px;
-    }
 
     .intro {
         height: 100%;
@@ -286,6 +283,10 @@ img.ajmint-unveil {
         display:none;
 
     }
+
+    .panel0-container{
+        margin-top: 50px;
+    }    
 
 }
 
