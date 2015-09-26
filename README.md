@@ -49,7 +49,7 @@ Once you've installed the above, install Tarbell!
 
 ## Working with Tarbell
 
-Create a new project using `tarbell newproject`. If you use Google Spreadsheets, this command will create a new spreadsheet and send you an invitation to edit. You can begin putting in content through your Spreadsheet. To preview the changes you make to your spreadsheet, run `tarbell serve` in the folder where you project lives and open your browser to `localhost:5000`. Your project preview is there. Anytime you make a change to the spreadsheet, simply refresh your browswer window. 
+Create a new project using `tarbell newproject`. If you use Google Spreadsheets, this command will create a new spreadsheet and send you an invitation to edit. You can begin putting in content through your Spreadsheet. To preview the changes you make to your spreadsheet, run `tarbell serve` in the folder where you project lives and open your browser to `localhost:5000`. Your project preview is there. Anytime you make a change to the spreadsheet, simply refresh your browser window. 
 
 (For more information, check out the main [Tarbell site](http://tarbell.io))
 
@@ -58,7 +58,7 @@ Create a new project using `tarbell newproject`. If you use Google Spreadsheets,
 
 (Note: Directions for using this template is specific to the template in this repository, not all Tarbell templates)
 
-Generating a new project with `tarbell newproject` should generate a Google Spreadsheet for you. Your Google Spreadsheet should have the following sheets. Do not modify any sheet names (order of the sheets does not matter).
+Generating a new project with `tarbell newproject` should generate a Google Spreadsheet for you. Your Google Spreadsheet should have the following sheets. Do not modify any sheet names (order of the sheets does not matter). Do not change any headers in the sheets. (If you encounter an inexplicable error, it's likely someone accidentally changed the name of a header.)
 
 Sheet name | Description
 --- | ---
@@ -120,7 +120,7 @@ column in right_rail | possible values | description
 ---|---|---
 `right_rail_id` | _string_ | The right rail id connects right rail information to where it should go within the content. Right_rail_id should also be found somewhere in the content sheet under the `right_rail_id` column.
 `content_type` | `text`, `subhead`, `image`, `markup` | The type of content you want to put in
-`id` | _string_ | TK
+`id` | _string_ | If you need to target a specific right rail block, include a unique id here. Can leave blank.
 `value` | _text_ | For `text`, include the article text. For `subhead`, include the subhead. For `image`, include a unique image_group id (e.g. `image-group-1`). For `markup`, include the name of the HTML markup file to grab (e.g. `_graphic.html`) or type in the markup you'd like directly into the cell
 `_notes` | _text_ | Anything you want. Isn't being used.
 
