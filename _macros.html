@@ -78,12 +78,11 @@
 {% macro load_images(image_row, images) %}
   {% for image in images|filter('image_group', image_row.value) %}
     {% if image.image_layout == "full" or image.image_layout == "half left" or image.image_layout == "half right" or image.image_layout == "third left" or image.image_layout == "third middle" or image.image_layout == "third right" %}
-      <div class="full-image {{ image.image_layout }}" id="{{ image.image_id }}"><a class="expand-image" href="{{ image.image_source }}">
+      <div class="full-image {{ image.image_layout }}" id="{{ image.image_id }}">
         <img class="ajmint-unveil" src="img/icons/loading.png" data-src="{{ image.image_source }}" /> 
         <noscript>
           <img src="{{ image.image_source }}" />
         </noscript> 
-      </a>
       </div>
     {% else %}
       <p class="tarbell-error">ERROR WITH IMAGE LAYOUT</p> 
