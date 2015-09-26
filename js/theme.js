@@ -86,13 +86,13 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
-
-$('.expand-image').magnificPopup({
-    type:'image',
-    verticalFit: true,
-    closeOnContentClick: true,
-    closeBtnInside: true
-});
+// magnific Popup having conflict with bootstrap layout
+// $('.expand-image').magnificPopup({
+//     type:'image',
+//     verticalFit: true,
+//     closeOnContentClick: true,
+//     closeBtnInside: true
+// });
 
 $("img.ajmint-unveil").unveil($(window).height()*2, function() {
     $(this).load(function() {

@@ -90,6 +90,6 @@
     {% endif %}
   {% endfor %}
   {% if images|filter('image_group', image_row.value, 'caption')|first %}
-  <div class="caption">{{ images|filter('image_group', image_row.value, 'caption') |first | replaceMarkdownLinks | safe }} <i>(Click to enlarge images)</i></div>
+  <div class="caption">{{ images|filter('image_group', image_row.value, 'caption') |first | replaceMarkdownLinks | safe }}</div>
   {% endif %}
 {% endmacro %}
