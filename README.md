@@ -1,5 +1,16 @@
 # Big Read Builder
 
+### Table of Contents:
+
+1. [Install & setup](#install--setup)
+2. [Working with Tarbell](#working-with-tarbell)
+3. [Using the template](#using-the-template)
+4. [Publishing a Tarbell project](#publishing-a-tarbell-project)
+5. [Creating multiple pages ](#creating-multiple-pages)
+6. [Breaking down the template files](#breaking-down-the-template-files)
+7. [Support](#support)
+
+
 ## Install & setup
 Warning: This install process looks intense, but you only have to do it once. After all this is installed, you can literally spin up a project in minutes. 
 
