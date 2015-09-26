@@ -175,7 +175,7 @@ column in bylines | possible values | description
 
 #### List of files
 
-Tarbell using [Jinja2](http://jinja.pocoo.org/docs/dev/#) as its templating engine. Jinja2 is 
+Tarbell using [Jinja2](http://jinja.pocoo.org/docs/dev/#) as its templating engine. 
 
 file name | description
 ---|---|---
@@ -183,16 +183,16 @@ file name | description
 `_base.html` | Code snippet to connect all code snippets together into one page
 `_content.html` | Code snippets for all the content on the page under the intro
 `_example-markup-file.html` | An example file with markup
-`_global-variables.html` | Variables that your javascript reference should be put into global variables within HTML here. It's generally bad practice to put javascript variables in your markup, but this allows you to use one javascript template file and apply it to multiple HTML pages.
+`_global-variables.html` | Includes variables from your spreadsheet that your javascript references. It's generally bad practice to put javascript variables in your markup, but this allows you to use one javascript template file and apply it to multiple HTML pages.
 `_intro.html` | Code snippets to create the top image + headline + subhead
-`_macros.html` | This file does the heavy lifting. 
+`_macros.html` | This file does the heavy lifting. Includes templates for all content components (e.g. text, image, markup, subhead)
 `_meta.html` | Code snippets for HTML meta tags (e.g. open graph tags, twitter tags)
-`_navigation.html` | Code for the top navigation header bar
-`_spreadsheet.xlsx` | This spreadsheet holds the template spreadsheet file for this particular Tarbell layout template (same as the Google Spreadsheet that gets created when you start a new project)
+`_navigation.html` | Code snippet for the top navigation header bar
+`_spreadsheet.xlsx` | This spreadsheet holds the template spreadsheet file for this particular Tarbell layout template (same as the Google Spreadsheet that gets created when you start a new project). After production, download your Google spreadsheet as `_spreadsheet.xlsx` to save it as a backup.
 `_story2.html` | A demo page for how to create new HTML pages within one project (e.g. with one spreadsheet)
-`_title.html` | Holds the <title></title> tag
+`_title.html` | Holds the `<title></title>` tag
 `blueprint.py` | Holds python functions (called "filters" in Jinja) that can help you manipulate content in your template. Holds some of the python scripts that make Tarbell work. 
-`index.html` | 
+`index.html` | The main file of your project that calls the `_base.html` file, which wires everything together. 
 
 
 ## Support
