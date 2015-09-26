@@ -120,7 +120,7 @@ column in right_rail | possible values | description
 ---|---|---
 `right_rail_id` | _string_ | The right rail id connects right rail information to where it should go within the content. Right_rail_id should also be found somewhere in the content sheet under the `right_rail_id` column.
 `content_type` | `text`, `subhead`, `image`, `markup` | The type of content you want to put in
-`id` | _string_ | TK
+`id` | _string_ | If you need to target a specific right rail block, include a unique id here. Can leave blank.
 `value` | _text_ | For `text`, include the article text. For `subhead`, include the subhead. For `image`, include a unique image_group id (e.g. `image-group-1`). For `markup`, include the name of the HTML markup file to grab (e.g. `_graphic.html`) or type in the markup you'd like directly into the cell
 `_notes` | _text_ | Anything you want. Isn't being used.
 
