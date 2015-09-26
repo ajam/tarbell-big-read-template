@@ -1,4 +1,4 @@
-# Big Read Builder
+# Big Read Builder (Tarbell template)
 
 ### Table of Contents:
 
