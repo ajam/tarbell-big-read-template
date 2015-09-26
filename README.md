@@ -192,4 +192,4 @@ file name | description
 
 ## Support
 
-[File a ticket](https://github.com/ajam/tarbell-big-read-template/issues), docs (TK).
+[File a ticket](https://github.com/ajam/tarbell-big-read-template/issues).
