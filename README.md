@@ -145,6 +145,8 @@ column in bylines | possible values | description
 
 ## Creating multiple pages 
 
+(In late October 2015, we will have a better and easier way of creating multiple pages. The directions below, however, do work for now.)
+
 1. Rename `_story2.html` to `story2.html` or a better, more SEO-friendly name. 
 2. Duplicate the following sheets in your spreadsheet and rename them all with the same suffix: `header`, `content`, `right_rail`, `images`, `bylines` (e.g. `header` to `header2`)
 3. For each additional page (like `story2.html`), do the following:
