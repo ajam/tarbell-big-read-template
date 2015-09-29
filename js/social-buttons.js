@@ -43,22 +43,29 @@
   }
 
   BIGREAD.sendFbShare = function(e){
-    var base_url = 'http://www.facebook.com/dialog/feed',
-        app_id   = '?app_id={{ og_app_id }}',
-        page_url = '&link=' + window.location.href;
-    
-    var description = "&description="+$('meta[property="og:description"]').attr('content'),
-        redirect    = '&redirect_uri={{ twitter_domain }}',
-        image       = '&image='+$('meta[property="og:image"]').attr('content');
+    if ( '{{ og_app_id }}' != "") { // if an app_id is available
+      var base_url = 'http://www.facebook.com/dialog/feed',
+          app_id   = '?app_id={{ og_app_id }}',
+          page_url = '&link=' + window.location.href;
+      
+      var description = "&description="+$('meta[property="og:description"]').attr('content'),
+          redirect    = '&redirect_uri={{ twitter_domain }}', // your Facebook app redirect URL
+          image       = '&image='+$('meta[property="og:image"]').attr('content');
 
-    var facebook_url = base_url + app_id + page_url + description + redirect + image;
-        facebook_url = BIGREAD.percentEncode(facebook_url);
-    // console.log(facebook_url)
+      var facebook_url = base_url + app_id + page_url + description + redirect + image;
+          facebook_url = BIGREAD.percentEncode(facebook_url);
+    } else { // if there is no app_id provided
+      var base_url = 'http://www.facebook.com/sharer/sharer.php',
+          page_url = '?u=' + encodeURIComponent(window.location.href);
+
+      var facebook_url = base_url + page_url;
+          facebook_url = BIGREAD.percentEncode(facebook_url);
+    }
 
     var settings = 'width=900,height=450,scrollbars=no,location=0,statusbars=0,menubars=0,toolbars=0,resizable=0';
     
     window.open(facebook_url, 'Share', settings);
-  }
+  } 
 
   BIGREAD.sendRedditShare = function(e){
     var base_url = 'https://www.reddit.com/submit',
