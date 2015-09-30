@@ -5,10 +5,11 @@
 1. [Install & setup](#install--setup)
 2. [Working with Tarbell](#working-with-tarbell)
 3. [Using the template](#using-the-template)
-4. [Publishing a Tarbell project](#publishing-a-tarbell-project)
-5. [Creating multiple pages ](#creating-multiple-pages)
-6. [Breaking down the template files](#breaking-down-the-template-files)
-7. [Support](#support)
+4. [Customizing the template](#customizing-the-template)
+5. [Publishing a Tarbell project](#publishing-a-tarbell-project)
+6. [Creating multiple pages ](#creating-multiple-pages)
+7. [Breaking down the template files](#breaking-down-the-template-files)
+8. [Support](#support)
 
 
 ## Install & setup
@@ -145,10 +146,14 @@ column in bylines | possible values | description
 `_notes` | _text_ | Anything you want. Isn't being used.
 
 
+## Customizing the template
+
+If you would like to make any style changes, etc... you should modify the files that are in the project folder, not the `_blueprint/` or `_output/` folders. 
+
 
 ## Publishing a Tarbell project
 
-1. Run `tarbell generate _output`. This takes the template and your spreadsheet and bakes a standalone folder with the main index file, and all necessary JS, CSS, images and other assets. 
+1. Run `tarbell generate _output`. This takes the template and your spreadsheet and bakes a standalone folder with the main index file, and all necessary JS, CSS, images and other assets. Remember to re-generate whenever you make changes to your spreadsheet or to any of your template files.
 2. Take the contents of your _output folder and upload these to a server (example: projects.aljazeera.com). You can also use the built-in `tarbell publish <target>` command in Tarbell to move your files onto your staging and production servers.
 
 
