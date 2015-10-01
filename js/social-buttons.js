@@ -1,6 +1,6 @@
 (function(){
 
-	window.BIGREAD = window.BIGREAD || {};
+  window.BIGREAD = window.BIGREAD || {};
 
   $('.bigread-social-btn[data-type="twitter"]').click(function(e){
     BIGREAD.sendTweet(e);
@@ -9,7 +9,7 @@
   });
 
   $('.bigread-social-btn[data-type="facebook"]').click(function(e){
-  	BIGREAD.sendFbShare(e);
+    BIGREAD.sendFbShare(e);
   });
 
   $('.bigread-social-btn[data-type="gplus"]').click(function(e){
@@ -25,14 +25,14 @@
     return string.replace(/#/g, '%23').replace(/,/g, '%2c').replace(/ /g, '%20')
   }
 
-	/* Usage: $el.click( function(e) { BIGREAD.sendTweet(e) }) */
-	// This function only needs e but if you want to pass in special text or a url hash, you can
+  /* Usage: $el.click( function(e) { BIGREAD.sendTweet(e) }) */
+  // This function only needs e but if you want to pass in special text or a url hash, you can
   BIGREAD.sendTweet = function(e, text, route){
     var base_url = 'https://twitter.com/intent/tweet?url=' + ((!route) ? window.location.href : ('http://' + window.location.hostname + window.location.pathname + route));
     text = (text) ? text : BIGREAD_GLOBAL.twitterDescription;
 
     var tweet_text  = "&text=" + text,
-        related     = "&related={{twitter_site_handle}}",
+        related     = "&related="+BIGREAD_GLOBAL.twitterSiteHandle,
         counter_url = "&counturl=" + window.location.hostname + window.location.pathname;
 
     var twitter_url = BIGREAD.percentEncode(base_url + tweet_text + related + counter_url);
@@ -43,13 +43,13 @@
   }
 
   BIGREAD.sendFbShare = function(e){
-    if ( '{{ og_app_id }}' != "") { // if an app_id is available
+    if ( BIGREAD_GLOBAL.ogAppId != "") { // if an app_id is available
       var base_url = 'http://www.facebook.com/dialog/feed',
-          app_id   = '?app_id={{ og_app_id }}',
+          app_id   = '?app_id='+BIGREAD_GLOBAL.ogAppId,
           page_url = '&link=' + window.location.href;
       
       var description = "&description="+$('meta[property="og:description"]').attr('content'),
-          redirect    = '&redirect_uri={{ twitter_domain }}', // your Facebook app redirect URL
+          redirect    = '&redirect_uri='+BIGREAD_GLOBAL.twitterDomain, // your Facebook app redirect URL
           image       = '&image='+$('meta[property="og:image"]').attr('content');
 
       var facebook_url = base_url + app_id + page_url + description + redirect + image;
@@ -65,7 +65,7 @@
     var settings = 'width=900,height=450,scrollbars=no,location=0,statusbars=0,menubars=0,toolbars=0,resizable=0';
     
     window.open(facebook_url, 'Share', settings);
-  } 
+  }  
 
   BIGREAD.sendRedditShare = function(e){
     var base_url = 'https://www.reddit.com/submit',
