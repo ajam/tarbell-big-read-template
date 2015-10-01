@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<div id="content-wrapper">
+
 <div id="content-container">
 
 <div class="row bylines-container bylines-top">
@@ -22,6 +24,8 @@
       <div class="byline">{{ byline_row.role_prefix }} {% if byline_row.link %} <a href="{{ byline_row.link }}" target="_blank"> {% endif %} {{ byline_row.name }} {% if byline_row.link %} </a> {% endif %} {% if byline_row.miscellaneous %} {{ byline_row.miscellaneous }} {% endif %}</div>
       {% endfor %}
   </div>
+</div>
+
 </div>
 
 </div>

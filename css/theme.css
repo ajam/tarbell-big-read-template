@@ -150,9 +150,15 @@
     text-shadow: 2px 2px #3E3E3E;
 }
 
-#content-container {
+#content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+}
+
+#content-container {
+    position: absolute;
+    top: 0;
 }
 
 .row.bylines-container {
